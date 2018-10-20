@@ -46,7 +46,6 @@ class ImageCheckBoxButtonState extends State<ImageCheckBoxButton> {
                             Icons.check,
                             color: Colors.white,
                           ),
-                          // backgroudColor: Colors.green,
                         )
                       : Container(),
                 ],
