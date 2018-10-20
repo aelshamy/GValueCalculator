@@ -3,6 +3,7 @@ import 'package:g_value_calculator/src/about.dart';
 import 'dart:math';
 
 import 'package:g_value_calculator/src/app_form_field.dart';
+import 'package:g_value_calculator/src/checkbox_button.dart';
 
 class PropellerMixerLaminar extends StatefulWidget {
   @override
@@ -14,12 +15,18 @@ class _PropellerMixerLaminarState extends State<PropellerMixerLaminar> {
   TextEditingController _nController = TextEditingController();
   TextEditingController _vController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  double propellerValue;
+  double groupValue;
 
   @override
   void initState() {
-    propellerValue = 0;
+    groupValue = 0.0;
     super.initState();
+  }
+
+  void setGropValue(value) {
+    setState(() {
+      groupValue = value;
+    });
   }
 
   @override
@@ -41,7 +48,8 @@ class _PropellerMixerLaminarState extends State<PropellerMixerLaminar> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+        padding:
+            EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0, bottom: 50.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -61,29 +69,24 @@ class _PropellerMixerLaminarState extends State<PropellerMixerLaminar> {
                 helperText: 'V: Volume of mixing chamber (m3)',
                 controller: _vController,
               ),
-              CheckboxListTile(
-                value: false,
-                title: Image.asset('images/10.jpg'),
-                subtitle: Text('1 pitch, 3 blades'),
-                controlAffinity: ListTileControlAffinity.leading,
-                activeColor: Colors.red,
-                onChanged: (bool value) {
-                  setState(() {
-                    propellerValue = 41.0;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                value: true,
-                title: Image.asset('images/11.jpg'),
-                subtitle: Text('12 pitchs, 3 blades'),
-                controlAffinity: ListTileControlAffinity.leading,
-                activeColor: Colors.red,
-                onChanged: (bool value) {
-                  setState(() {
-                    propellerValue = 43.5;
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ImageCheckBoxButton(
+                    image: 'images/10.jpg',
+                    text: '1 pitch, 3 blades',
+                    value: 41.0,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                  ImageCheckBoxButton(
+                    image: 'images/11.jpg',
+                    text: '2 pitch, 3 blades',
+                    value: 43.5,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                ],
               ),
               RaisedButton(
                 child: Text('Calculate'),
@@ -94,7 +97,7 @@ class _PropellerMixerLaminarState extends State<PropellerMixerLaminar> {
                     borderRadius: BorderRadius.circular(30.0)),
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    double result = sqrt((propellerValue *
+                    double result = sqrt((groupValue *
                             pow(double.parse(_nController.text), 2) *
                             pow(double.parse(_dController.text), 3)) /
                         (double.parse(_vController.text)));

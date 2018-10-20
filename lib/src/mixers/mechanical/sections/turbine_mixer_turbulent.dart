@@ -3,6 +3,7 @@ import 'package:g_value_calculator/src/about.dart';
 import 'dart:math';
 
 import 'package:g_value_calculator/src/app_form_field.dart';
+import 'package:g_value_calculator/src/checkbox_button.dart';
 
 class TurbineMixerTurbulent extends StatefulWidget {
   @override
@@ -14,12 +15,20 @@ class _TurbineMixerTurbulentState extends State<TurbineMixerTurbulent> {
   TextEditingController _nController = TextEditingController();
   TextEditingController _vController = TextEditingController();
   double _selectedValue;
+  double groupValue;
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     _selectedValue = 1.307 * pow(10, -3);
+    groupValue = 0.0;
     super.initState();
+  }
+
+  void setGropValue(value) {
+    setState(() {
+      groupValue = value;
+    });
   }
 
   @override
@@ -41,7 +50,8 @@ class _TurbineMixerTurbulentState extends State<TurbineMixerTurbulent> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+        padding:
+            EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0, bottom: 50.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -60,6 +70,63 @@ class _TurbineMixerTurbulentState extends State<TurbineMixerTurbulent> {
                 labelText: 'V',
                 helperText: 'V: Volume of mixing chamber (m3)',
                 controller: _vController,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ImageCheckBoxButton(
+                    image: 'images/13.jpg',
+                    text: 'Turbine 4 flat blade, Vaned disk',
+                    value: 71.00000000001,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                  ImageCheckBoxButton(
+                    image: 'images/14.jpg',
+                    text: 'Turbine 6 flat blade, Vaned disk',
+                    value: 71.0,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ImageCheckBoxButton(
+                    image: 'images/15.jpg',
+                    text: 'Turbine, 6 curved blade',
+                    value: 70.00000000001,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                  ImageCheckBoxButton(
+                    image: 'images/16.jpg',
+                    text: 'Fan turbine, 6 blades at 45 degree',
+                    value: 70.0,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ImageCheckBoxButton(
+                    image: 'images/17.jpg',
+                    text: 'Shrouded turbine, 6 curved blade',
+                    value: 97.5,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                  ImageCheckBoxButton(
+                    image: 'images/18.jpg',
+                    text: 'Shrouded turbine, with stator, no baffles',
+                    value: 172.5,
+                    groupValue: groupValue,
+                    valueSetter: setGropValue,
+                  ),
+                ],
               ),
               Container(
                 padding: EdgeInsets.only(top: 12.0, bottom: 30.0),
@@ -110,7 +177,7 @@ class _TurbineMixerTurbulentState extends State<TurbineMixerTurbulent> {
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
                     double result = sqrt((1000 *
-                            // k *
+                            groupValue *
                             pow(double.parse(_nController.text), 3) *
                             pow(double.parse(_dController.text), 5)) /
                         (_selectedValue * double.parse(_vController.text)));
