@@ -44,7 +44,8 @@ class _PaddleMixerState extends State<PaddleMixer> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+        padding:
+            EdgeInsets.only(left: 30.0, right: 30.0, top: 10.0, bottom: 50.0),
         child: Form(
           key: _formKey,
           child: Column(
