@@ -22,11 +22,11 @@ class ImageCheckBoxButton extends StatefulWidget {
 class ImageCheckBoxButtonState extends State<ImageCheckBoxButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
+    return Expanded(
+      // margin: EdgeInsets.only(top: 20.0),
       child: FlatButton(
         child: SizedBox(
-          width: 140.0,
+          // width: 140.0,
           child: Column(
             children: <Widget>[
               Stack(
