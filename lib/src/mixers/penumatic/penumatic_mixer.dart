@@ -4,6 +4,11 @@ import 'package:g_value_calculator/src/app_form_field.dart';
 import 'package:g_value_calculator/src/my_app_bar.dart';
 
 class PenumaticMixer extends StatefulWidget {
+  String _title;
+  set title(String value) {
+    this._title = value;
+  }
+
   @override
   _PenumaticMixerState createState() => _PenumaticMixerState();
 }
@@ -26,7 +31,7 @@ class _PenumaticMixerState extends State<PenumaticMixer> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MyAppBar(
-        title: 'Penumatic Mixer',
+        title: widget._title,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),

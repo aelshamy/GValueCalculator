@@ -7,12 +7,17 @@ import 'package:g_value_calculator/src/mixers/static/sections/venturi_section.da
 import 'package:g_value_calculator/src/mixers/static/sections/vertical_flow_baffles.dart';
 
 class StaticMixer extends StatelessWidget {
+  String _title;
+  set title(String value) {
+    this._title = value;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
       appBar: MyAppBar(
-        title: 'Static Mixer',
+        title: _title,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20.0),

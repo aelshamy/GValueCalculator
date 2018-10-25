@@ -9,12 +9,17 @@ import 'package:g_value_calculator/src/mixers/mechanical/sections/turbine_mixer_
 import 'package:g_value_calculator/src/section_tile.dart';
 
 class MechanicalMixer extends StatelessWidget {
+  String _title;
+  set title(String value) {
+    this._title = value;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
       appBar: MyAppBar(
-        title: 'Mechanical Mixer',
+        title: _title,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20.0),
