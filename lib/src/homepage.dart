@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
   Widget title(String text) {
     return Text(
       text,
-      style: TextStyle(color: Colors.green, fontSize: 30.0),
+      style: TextStyle(color: Colors.amber, fontSize: 30.0),
     );
   }
 
