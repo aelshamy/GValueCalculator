@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:g_value_calculator/src/about.dart';
+import 'package:g_value_calculator/src/my_app_bar.dart';
+import 'package:g_value_calculator/src/section_tile.dart';
 import 'package:g_value_calculator/src/mixers/static/sections/horizontal_flow_baffles.dart';
 import 'package:g_value_calculator/src/mixers/static/sections/hydraulic_jumps.dart';
 import 'package:g_value_calculator/src/mixers/static/sections/venturi_section.dart';
@@ -9,78 +10,31 @@ class StaticMixer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Static Mixer'),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.info),
-            onPressed: () {
-              navigateTo(context, About());
-            },
-          )
-        ],
+      backgroundColor: Colors.blue.shade200,
+      appBar: MyAppBar(
+        title: 'Static Mixer',
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 20.0),
         children: <Widget>[
-          ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-            leading: CircleAvatar(
-              child: Text('V'),
-              backgroundColor: Colors.amberAccent.shade700,
-            ),
-            title: Text('Venturi sections'),
-            onTap: () {
-              navigateTo(context, VenturiSections());
-            },
+          SectionTile(
+            title: 'Venturi sections',
+            pagetToNavigate: VenturiSections(),
           ),
-          ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-            leading: CircleAvatar(
-              child: Text('H'),
-              backgroundColor: Colors.amberAccent.shade700,
-            ),
-            title: Text('Hydraulic jumps, Parshall flume, Weirs'),
-            onTap: () {
-              navigateTo(context, HydraulicJumps());
-            },
+          SectionTile(
+            title: 'Hydraulic jumps, Parshall flume, Weirs',
+            pagetToNavigate: HydraulicJumps(),
           ),
-          ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-            leading: CircleAvatar(
-              child: Text('H'),
-              backgroundColor: Colors.amberAccent.shade700,
-            ),
-            title: Text('Horizontal flow baffles'),
-            onTap: () {
-              navigateTo(context, HorizontalFlowBaffles());
-            },
+          SectionTile(
+            title: 'Horizontal flow baffles',
+            pagetToNavigate: HorizontalFlowBaffles(),
           ),
-          ListTile(
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
-            leading: CircleAvatar(
-              child: Text('H'),
-              backgroundColor: Colors.amberAccent.shade700,
-            ),
-            title: Text('Vertical flow baffles'),
-            onTap: () {
-              navigateTo(context, VerticalFlowBaffles());
-            },
+          SectionTile(
+            title: 'Vertical flow baffles',
+            pagetToNavigate: VerticalFlowBaffles(),
           ),
         ],
       ),
-    );
-  }
-
-  void navigateTo(context, page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
     );
   }
 }

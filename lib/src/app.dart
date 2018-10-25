@@ -11,7 +11,16 @@ class GValueCalculator extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/bg.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.white, BlendMode.color),
+          ),
+        ),
+        child: HomePage(),
+      ),
     );
   }
 }

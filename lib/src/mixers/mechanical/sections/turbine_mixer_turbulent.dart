@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:g_value_calculator/src/about.dart';
 import 'dart:math';
-
 import 'package:g_value_calculator/src/app_form_field.dart';
 import 'package:g_value_calculator/src/checkbox_button.dart';
+import 'package:g_value_calculator/src/my_app_bar.dart';
 
 class TurbineMixerTurbulent extends StatefulWidget {
+  String _title;
+
+  set title(String value) {
+    this._title = value;
+  }
+
   @override
   _TurbineMixerTurbulentState createState() => _TurbineMixerTurbulentState();
 }
@@ -34,20 +39,9 @@ class _TurbineMixerTurbulentState extends State<TurbineMixerTurbulent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Turbine Mixer (Turbulent)'),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.info),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => About()),
-              );
-            },
-          )
-        ],
+      backgroundColor: Colors.white,
+      appBar: MyAppBar(
+        title: widget._title,
       ),
       body: SingleChildScrollView(
         padding:
