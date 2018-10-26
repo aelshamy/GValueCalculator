@@ -5,20 +5,33 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade800,
+        elevation: 0.0,
         title: Text('About'),
         centerTitle: true,
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(30.0),
         child: Column(
           children: <Widget>[
             Text(
-                'Many of water experts suffer from the difficulty in G-Value calculation this about to end through the use of this innovative application it will allow you to calculate your mixing velocity gradient through digital smart interface.'),
+              'Many of water experts suffer from the difficulty in G-Value calculation this about to end through the use of this innovative application it will allow you to calculate your mixing velocity gradient through digital smart interface.',
+              style: getTextStyle(),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20.0),
+            ),
             Text(
-                'G Value: measure of the relative velocity of two particles of fluid and distance between "The parameter that express mixing intensity by sec-1'),
+              'G Value: measure of the relative velocity of two particles of fluid and distance between "The parameter that express mixing intensity by sec-1',
+              style: getTextStyle(),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  TextStyle getTextStyle() {
+    return TextStyle(fontSize: 22.0);
   }
 }
