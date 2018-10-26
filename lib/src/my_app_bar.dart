@@ -18,7 +18,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => About()),
+              // MaterialPageRoute(builder: (context) => About()),
+              AboutPageRoute(),
             );
           },
         )

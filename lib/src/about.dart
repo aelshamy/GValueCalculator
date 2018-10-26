@@ -35,3 +35,26 @@ class About extends StatelessWidget {
     return TextStyle(fontSize: 22.0);
   }
 }
+
+class AboutPageRoute extends MaterialPageRoute {
+  AboutPageRoute() : super(builder: (BuildContext context) => new About());
+
+  // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
+  // @override
+  // Widget buildPage(BuildContext context, Animation<double> animation,
+  //     Animation<double> secondaryAnimation) {
+  //   return new FadeTransition(opacity: animation, child: new About());
+  // }
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return ScaleTransition(
+      scale: animation,
+      child: FadeTransition(
+        opacity: animation,
+        child: About(),
+      ),
+    );
+  }
+}
